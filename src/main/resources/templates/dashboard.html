@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Event-to-Insight Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        .form-group { margin: 10px 0; }
+    </style>
+</head>
+<body>
+<h2>Submit Incident</h2>
+<form action="/submit" method="post" th:object="${incidentForm}">
+    <div class="form-group">
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" required/>
+    </div>
+    <div class="form-group">
+        <label>Description:</label>
+        <textarea th:field="*{description}" rows="4" cols="50" required></textarea>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<h2>All Incidents</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Severity</th>
+        <th>Category</th>
+        <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="incident : ${incidents}">
+        <td th:text="${incident.id}"></td>
+        <td th:text="${incident.title}"></td>
+        <td th:text="${incident.description}"></td>
+        <td th:text="${incident.severity}"></td>
+        <td th:text="${incident.category}"></td>
+        <td th:text="${#dates.format(incident.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
