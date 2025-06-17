@@ -27,23 +27,6 @@ The **Event-to-Insight** platform helps IT support teams quickly prioritize and 
 
 ---
 
-## 🗂️ Project Structure
-
-src/
-├── controller/
-│ └── IncidentController.java
-├── dto/
-│ ├── IncidentDTO.java
-│ └── IncidentRequest.java
-├── model/
-│ └── Incident.java
-├── repository/
-│ └── IncidentRepository.java
-├── service/
-│ ├── IncidentService.java
-│ └── IncidentClassifier.java
-└── EventToInsightApplication.java
-
 
 2. Run Using Maven
 mvn spring-boot:run
